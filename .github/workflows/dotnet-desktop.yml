@@ -34,7 +34,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0 # Update to your desired .NET version
+          dotnet-version: 6.0.414 # Update to your desired .NET version
 
       - name: Publish Avalonia application
         run: dotnet publish -c Release -r win-x64 -o ./publish
