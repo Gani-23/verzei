@@ -15,7 +15,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.1 # Update to your desired .NET version
+          dotnet-version: 6.0.22 # Update to your desired .NET version
 
       - name: Restore dependencies
         run: dotnet restore
@@ -33,7 +33,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.1 # Update to your desired .NET version
+          dotnet-version: 6.0.22 # Update to your desired .NET version
 
       - name: Publish Avalonia application
         run: dotnet publish -c Release -o ./publish
