@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
+        x:Class="verzei.MainWindow"
+        Title="IMusic"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="OSXThickTitleBar"
+        Background="Transparent">
+        
+        <Panel>
+                <Grid ColumnDefinitions="Auto,*,*">
+                        <Grid Grid.Column="0" Background="#252526">
+                        <Grid ColumnDefinitions="Auto, *" RenderOptions.BitmapInterpolationMode="HighQuality">
+                                <Image Source="avares://verzei/Assets/Images/Clone.png" Width="100" Height="100"></Image>
+                        </Grid>
+                        </Grid>
+                        
+                        <Grid Grid.Column="1" Background="Bisque">
+                                <TextBlock FontFamily="{StaticResource PoppinsFont}" Foreground="Black" FontSize="50"> Audio</TextBlock>
+                        </Grid>
+                </Grid>
+        </Panel>
+</Window>
