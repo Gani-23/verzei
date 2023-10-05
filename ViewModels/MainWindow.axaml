@@ -19,7 +19,6 @@
                         </Grid>
                         
                         <Grid Grid.Column="1" Background="Bisque">
-                                <TextBlock FontFamily="{StaticResource PoppinsFont}" Foreground="Black" FontSize="50"> Audio</TextBlock>
                         </Grid>
                 </Grid>
         </Panel>
