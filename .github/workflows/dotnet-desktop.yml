@@ -57,7 +57,8 @@ jobs:
 
     env:
       Solution_Name: verzei.sln    
-      Wap_Project_Directory: verzei # Replace with your solution name, i.e. MyWpfApp.sln.
+      Wap_Project_Directory: verzei
+      # Replace with your solution name, i.e. MyWpfApp.sln.
       
     steps:
     - name: Checkout
@@ -71,9 +72,7 @@ jobs:
       with:
         dotnet-version: 6.0
 
-    - name: Publish app
-      run: dotnet publish -c Release -r win-x64 -o /verzei/
-      
+
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
@@ -92,17 +91,15 @@ jobs:
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     # Create the app package by building and packaging the Windows Application Packaging project
-    - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64
-        Appx_Package_Build_Mode: StoreUpload
-        Configuration: ${{ matrix.configuration }}
 
     # Remove the pfx
     - name: Remove the pfx
       run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
+
+
+    - name: Publish app
+      run: dotnet publish -c Release -r win-x64 -o /verzei/binaries
+      
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload build artifacts
