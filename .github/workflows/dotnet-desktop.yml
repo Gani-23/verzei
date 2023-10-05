@@ -3,7 +3,7 @@ name: Build and Release Avalonia Application
 on:
   push:
     branches:
-      - main # Change this to your main branch
+      - master # Change this to your main branch
 
 jobs:
   build:
