@@ -15,7 +15,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.* # Specify a different version here
+          dotnet-version: 6.0.414 # Specify a different version here
 
 
       - name: Restore dependencies
