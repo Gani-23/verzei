@@ -43,7 +43,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ./publish/*
-          token: ${{ "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" }}
+          token: ${{ secrets.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}}
         env:
-          GITHUB_TOKEN: ${{ "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" }}
+          GITHUB_TOKEN: ${{ secrets.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 }}
 
