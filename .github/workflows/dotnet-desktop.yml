@@ -36,7 +36,7 @@ jobs:
           dotnet-version: 6.0.22 # Update to your desired .NET version
 
       - name: Publish Avalonia application
-        run: dotnet publish -c Release -o ./publish
+        run: dotnet publish -c Release -r win-x64 -o ./publish
 
       - name: Create Release
         id: create_release
