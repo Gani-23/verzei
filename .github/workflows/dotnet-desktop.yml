@@ -17,7 +17,6 @@ jobs:
         with:
           dotnet-version: 6.0.414 # Specify a different version here
 
-
       - name: Restore dependencies
         run: dotnet restore
 
@@ -39,11 +38,23 @@ jobs:
       - name: Publish Avalonia application
         run: dotnet publish -c Release -r win-x64 -o ./publish
 
+      - name: Create Git Tag
+        run: git tag -a v1.0 -m "Release v1.0"
+        env:
+          GITHUB_TOKEN: ${{ secrets.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 }}
+      
+      - name: Push Git Tag
+        run: git push origin v1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.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 }}
+      
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: ./publish/*
-          token: ${{ secrets.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 }} # Replace with the name of your GitHub PAT secret
+          token: ${{ secrets.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 }} # Use the GitHub Token provided by GitHub Actions
 
 
+
+ 
