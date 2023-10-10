@@ -3,7 +3,7 @@ name: Build and Release Avalonia Application
 on:
   push:
     branches:
-      - master # Change this to your main branch
+      - main # Change this to your main branch
 
 jobs:
   build:
@@ -39,7 +39,7 @@ jobs:
         run: dotnet publish -c Release -r win-x64 -o ./publish
 
       - name: Set up Git
-        run: git config --global user.email "saiganesh7989@github.com" && git config --global user.name "Gani-23"
+        run: git config --global user.email "github-actions@github.com" && git config --global user.name "GitHub Actions"
 
       - name: Create Git Tag
         run: git tag -a v${{ github.run_number }} -m "Version v${{ github.run_number }}"
@@ -52,5 +52,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ./publish/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.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 }} # Replace with the name of your GitHub PAT secret
+          token: ${{ secrets.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 }} # Replace with the name of your GitHub PAT secret
