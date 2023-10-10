@@ -38,23 +38,19 @@ jobs:
       - name: Publish Avalonia application
         run: dotnet publish -c Release -r win-x64 -o ./publish
 
+      - name: Set up Git
+        run: git config --global user.email "saiganesh7989@github.com" && git config --global user.name "Gani-23"
+
       - name: Create Git Tag
-        run: git tag -a v1.0 -m "Release v1.0"
-        env:
-          GITHUB_TOKEN: ${{ secrets.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 }}
-      
+        run: git tag -a v${{ github.run_number }} -m "Version v${{ github.run_number }}"
+
       - name: Push Git Tag
-        run: git push origin v1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.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 }}
-      
+        run: git push origin v${{ github.run_number }}
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: ./publish/*
-          token: ${{ secrets.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 }} # Use the GitHub Token provided by GitHub Actions
-
-
-
- 
+        env:
+          GITHUB_TOKEN: ${{ secrets.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 }} # Replace with the name of your GitHub PAT secret
